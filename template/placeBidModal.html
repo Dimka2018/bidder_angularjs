@@ -1,0 +1,10 @@
+<div class="modal_background">
+    <div class="modal_window">
+        <span class="modal_header">{{header}}</span>
+        <input type="number" class="bid" placeholder="{{placeholder}}" ng-model="val"/>
+        <div class="modal_button_container">
+            <button ng-click="ok({product: product, futureBid: val}); cancel()">OK</button>
+            <button ng-click="cancel()">Cancel</button>
+        </div>
+    </div>
+</div>

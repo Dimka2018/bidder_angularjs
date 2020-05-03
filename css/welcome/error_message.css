@@ -1,0 +1,9 @@
+.error_message {
+    width: 27vw;
+    height: 10vw;
+    color: black;
+    font-size: 2vw;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 2vw;
+}

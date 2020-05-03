@@ -1,0 +1,17 @@
+.logout_butt {
+    position: absolute;
+    top: 1vw;
+    right: 1vw;
+    background: black;
+    color: white;
+    font-size: 2vw;
+    font-weight: bold;
+    width: 10vw;
+    height: 4vw;
+    border: none;
+    outline: none;
+}
+
+.logout_butt:hover {
+    cursor: pointer;
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>welcome</title>
+    <link rel="stylesheet" href="css/body.css">
+    <link rel="stylesheet" href="css/welcome/user_form.css">
+    <link rel="stylesheet" href="css/welcome/error_message.css">
+</head>
+<body>
+<form class="user_form" ng-if="!isRegistrationMode">
+    <span class="form_header">Log in</span>
+    <input class="form_input" type="text" ng-model="$parent.loginName" placeholder="login" />
+    <input class="form_input" type="password" ng-model="$parent.loginPass" placeholder="password" />
+    <button class="form_button" ng-click="login()">Log in</button>
+    <a class="form_link" ng-click="setRegistrationMode()">Registration</a>
+</form>
+
+<form  class="user_form" ng-if="isRegistrationMode">
+    <span class="form_header">Registration</span>
+    <input class="form_input" type="text" ng-model="$parent.registrationName" placeholder="login" />
+    <input class="form_input" type="password" ng-model="$parent.registrationPass" placeholder="password" />
+    <button class="form_button" ng-click="register()" >Registrate</button>
+    <a class="form_link" ng-click="setLoginMode()">Log in</a>
+</form>
+<div class="error_message">{{errorMessage}}</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bid service</title>
+    <link rel="stylesheet" href="css/body.css">
+    <link rel="stylesheet" href="css/bid/product_table.css">
+    <link rel="stylesheet" href="css/bid/logout_button.css">
+    <link rel="stylesheet" href="css/bid/load_button.css">
+    <link rel="stylesheet" href="css/template/place_bid_modal.css">
+</head>
+<body>
+<place-bid-modal ng-if="isBidMode"
+                 cancel="toggleBidModal()"
+                 ok="setBid(productToChange, futureBid)"
+                 header="Enter your bid"
+                 placeholder="put your bid here"></place-bid-modal>
+
+<table class="product_table">
+    <thead>
+    <tr class="product_info">
+        <th>id</th>
+        <th>title</th>
+        <th>start</th>
+        <th>end</th>
+        <th>bid</th>
+        <th>price</th>
+    </tr>
+    </thead>
+    <tbody ng-repeat="x in products track by x.id">
+    <tr class="clickable product_info" ng-click="toggleDescription($index)" ng-class="{sold: isSold(x)}">
+        <td>{{x.id}}</td>
+        <td>{{x.title}}</td>
+        <td>{{x.start | dateFilter}}</td>
+        <td>{{x.end | dateFilter}}</td>
+        <td>{{x.bid | currency : $ : 0}}</td>
+        <td>{{x.price| currency : $ : 0}}</td>
+    </tr>
+    <tr class="product_description" ng-if="descriptionIndex === $index">
+        <td colspan="6">
+            <div class="description_container">
+                <span>Description: </span>
+                <description>{{x.description}}</description>
+                <bid ng-if="!isSold(x)">
+                    <button ng-click="toggleBidModal(x)" class="add_bid_button">place bid:</button>
+                </bid>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div class="product_load_container" ng-if="products.length < numberProducts">
+    <button class="product_load_butt" ng-click="loadProductsPack(2)">Load{{}}</button>
+</div>
+<button class="logout_butt" ng-click="logout()"> Logout</button>
+</body>
+</html>
